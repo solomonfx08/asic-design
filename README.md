@@ -22,6 +22,7 @@ Step-2
   ![2 3](https://github.com/user-attachments/assets/46d8bbcb-d963-491a-8e59-2bf31958612c)
     
   2.4 Finding next block address and subtracting, dividing by 4 to get no of instructions
+  we get F which is unfortunately not in sc (3C/4=F(15))
   
   ![2 5](https://github.com/user-attachments/assets/d62c5c6e-ba1c-4c0e-9a44-414a59f50c2d)
     
@@ -34,12 +35,16 @@ Step-3
 
    ![2 7](https://github.com/user-attachments/assets/b217261d-18ad-4d94-94f6-efad265b92be)
     
-3.3 repeating the process to find the no of instructions
+3.3 repeating the process to find the no of instructions (c=12)
 
   ![2 7](https://github.com/user-attachments/assets/3e17fa26-1ca3-4548-9a69-a0213f8e0d29)
 
+  ![2 8](https://github.com/user-attachments/assets/ab22662a-e704-4f93-b8ee-7d3a96bf7961)
+
+
 Conclusion -
   O1 is moderate in it's code optimization, Ofast is aggressive
+  o1 has 15 while ofast has 12
   
     
    
