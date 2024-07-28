@@ -97,7 +97,43 @@ STEP 1
   1.5 error - auic getting loaded insted of lui need help!
   
 Conclusion-- encountering error
-  
+
+
+
+
+
+ To sort and organise a set of given instructions into their respective format type:
+
+Assembly Instruction	Instruction format
+ADD r5, r6, r7	R
+SUB r7, r5, r6	R
+AND r6, r5, r7	R
+OR r8, r6, r5	R
+XOR r8, r5, r4	R
+SLT r10, r2, r4	R
+ADDI r12, r3, 5	I
+SW r3, r1, 4	S
+SRL r16, r11, r2	R
+BNE r0, r1, 20	B
+BEQ r0, r0, 15	B
+LW r13, r11, 2	I
+SLL r15, r11, r2	R
+The corresponding RISCV ISA fo the above instructions is shown in the table below:
+
+Assembly Instruction	Hexadecimal Representation
+ADD r5, r6, r7	0x00D302B3
+SUB r7, r5, r6	0x40B383B3
+AND r6, r5, r7	0x00F2B333
+OR r8, r6, r5	0x00D322B3
+XOR r8, r5, r4	0x00C292B3
+SLT r10, r2, r4	0x004122B3
+ADDI r12, r3, 5	0x00518293
+SW r3, r1, 4	0x00312023
+SRL r16, r11, r2	0x002585B3
+BNE r0, r1, 20	0x00112163
+BEQ r0, r0, 15	0x000003E3
+LW r13, r11, 2	0x002585B3
+SLL r15, r11, r2	0x002585B3 
 
 
     
