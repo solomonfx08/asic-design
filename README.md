@@ -100,7 +100,10 @@ Conclusion-- encountering error
 
 
 
+ # asic-design activity 3
+ 
 
+TASK 1- 
 
  To sort and organise a set of given instructions into their respective format type:
 
@@ -172,7 +175,8 @@ EDITING THE VERILOG CODE TO ASSIGNED INSTRUCTIONS
 
 RUNNING GTKWAVE
 
-![code](https://github.com/user-attachments/assets/6486e0d5-160f-4e96-9445-9aac9220a6e4)
+![running](https://github.com/user-attachments/assets/1dd3b5dd-3d17-4218-9873-4390f189eb51)
+
 
 OUTPUT WAVEFROMS
 
