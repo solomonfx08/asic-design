@@ -105,44 +105,153 @@ Conclusion-- encountering error
  To sort and organise a set of given instructions into their respective format type:
 
 Assembly Instruction	Instruction format
-ADD r5, r6, r7	R
-SUB r7, r5, r6	R
-AND r6, r5, r7	R
-OR r8, r6, r5	R
-XOR r8, r5, r4	R
-SLT r10, r2, r4	R
-ADDI r12, r3, 5	I
-SW r3, r1, 4	S
-SRL r16, r11, r2	R
-BNE r0, r1, 20	B
-BEQ r0, r0, 15	B
-LW r13, r11, 2	I
-SLL r15, r11, r2	R
-The corresponding RISCV ISA fo the above instructions is shown in the table below:
+| Instruction      | Format | Operation              |
+|------------------|--------|------------------------|
+| ADD r11, r12, r13| R      | Add                    |
+| SUB r13, r11, r12| R      | Subtract               |
+|AND r12, r11, r13 | R      | Logical AND            |
+| OR r8, r12, r5   | R      | Logical OR             |
+| XOR r8, r11, r4  | R      | Logical XOR            |
+| SLT r30, r20, r4 | R      | Set on Less Than       |
+| ADDI r31, r21, 5 | I      | Add Immediate          |
+| SW r21, r19, 4   | S      | Store Word             |
+| SRL r26, r21, r20| R      | Shift Right Logical    |
+| BNE r0, r19, 20  | B      | Branch if Not Equal    |
+| BEQ r0, r0, 15   | B      | Branch if Equal        |
+| LW r23, r21, 2   | I      | Load Word              |
+| SLL r25, r21, r20| R      | Shift Left Logical     |
+
+
+ 
+Upload the 32-bit pattern on Github"
+The corresponding RISCV hexa decimal ISA for the above instructions is shown in the table below:
 
 Assembly Instruction	Hexadecimal Representation
-ADD r5, r6, r7	0x00D302B3
-SUB r7, r5, r6	0x40B383B3
-AND r6, r5, r7	0x00F2B333
-OR r8, r6, r5	0x00D322B3
-XOR r8, r5, r4	0x00C292B3
-SLT r10, r2, r4	0x004122B3
-ADDI r12, r3, 5	0x00518293
-SW r3, r1, 4	0x00312023
-SRL r16, r11, r2	0x002585B3
-BNE r0, r1, 20	0x00112163
-BEQ r0, r0, 15	0x000003E3
-LW r13, r11, 2	0x002585B3
-SLL r15, r11, r2	0x002585B3 
+| Instruction      | Format | Operation              | RISC-V ISA    |
+|------------------|--------|------------------------|---------------|
+| ADD r11, r12, r13   | R      | Add                    | 0x00d60b33   |
+| SUB r13, r11, r12   | R      | Subtract               | 0x40b60d33    |
+| AND r12, r11, r13   | R      | Logical AND            | 0x00d6b733    |
+|OR r8, r12, r5     | R      | Logical OR             | 0x00560b33    |
+| XOR r8, r11, r4   | R      | Logical XOR            | 0x0045b333   |
+| SLT r30, r20, r4  | R      | Set on Less Than       | 0x004aa733    |
+|  ADDI r31, r21, 5   | I      | Add Immediate          | 0x005af093    |
+| SW r21, r19, 4   | S      | Store Word             | 0x004a9b23    |
+| SRL r26, r21, r20 | R      | Shift Right Logical    | 0x014ad333    |
+| BNE r0, r19, 20  | B      | Branch if Not Equal    |0x014a1a63    |
+| BEQ r0, r0, 15   | B      | Branch if Equal        | 0x00f0063    |
+| LW r23, r21, 2  | I      | Load Word              | 0x002ad113    |
+| SLL r25, r21, r20 | R      | Shift Left Logical     | 0x014a9323    |
 
+
+Task 2 To execute in instructed assembly instructions using a given verilog code for a riscV processor.
+
+
+Here's the table formatted for GitHub with the provided data:
+Standard ISA vs Hardcoded ISA
+
+| Operation         |   Standard RISCV ISA| Hardcoded ISA  |
+|-------------------|---------------------|----------------|
+| ADD r11, r12, r13    | 32'h00d6b33       | 32'h00d6b300   |
+| SUB r13, r11, r12   | 32'h40b6d33        | 32'h40b6d380   |
+| AND r12, r11, r13    | 32'h00d6f33        | 32'h00d6f400  |
+| OR r8, r12, r5    | 32'h0056c33        | 32'h0056c400  |
+|XOR r8, r11, r4    | 32'h0046c33        | 32'h0046c500   |
+| SLT r30, r20, r4    | 32'h004a0f33        |32'h004a0f00   |
+|  ADDI r31, r21, 5  | 32'h005af93        | 32'h005af200   |
+| SW r21, r19, 4      | 32'h004bb3        | 32'h0040b300   |
+| SRL r26, r21, r20   | 32'h014b6d33        | 32'h014b6d00   |
+| BNE r0, r19, 20    | 32'h014be63        | 32'h014be200   |
+| BEQ r0, r0, 15    | 32'h00fbe63        | 32'h00fbe000   |
+| LW r23, r21, 2    | 32'h002b8513        | 32'h002b8100   |
+|SLL r25, r21, r20  |32'h014b6933        | 32'h014b6900   |
+
+EDITING THE VERILOG CODE TO ASSIGNED INSTRUCTIONS
+
+![code](https://github.com/user-attachments/assets/7e69f984-1fe7-4a6c-ae9f-808f1f26cf6b)
+
+RUNNING GTKWAVE
+
+![code](https://github.com/user-attachments/assets/6486e0d5-160f-4e96-9445-9aac9220a6e4)
+
+OUTPUT WAVEFROMS
+
+
+ ADD r11, r12, r13
+ 
+
+
+![and](https://github.com/user-attachments/assets/3d2ff4af-e50c-4a69-81ad-838ac76529f5)
+
+
+
+SUB r13, r11, r12
+
+
+
+![sub](https://github.com/user-attachments/assets/ae17da79-9fb8-4f4e-9f66-ff14305706fd)
+
+
+
+AND r12, r11, r13
 
     
    
+![and](https://github.com/user-attachments/assets/75d946b6-b965-4405-bf55-7e19301a7f1f)
+
+
+OR r8, r12, r5
+
+
+
+![or](https://github.com/user-attachments/assets/dda958c4-d648-4f43-83f1-84b00e4597ed)
+
+XOR r8, r11, r4
+
+
+![xor](https://github.com/user-attachments/assets/e79aa888-d2bc-4603-9133-0197fa08b4b2)
+
+
+SLT r30, r20, r4
+
+  ![slt](https://github.com/user-attachments/assets/178cdced-9c18-48fe-b723-b323f437d41e)
+
+ADDI r31, r21, 5
+
+![addi](https://github.com/user-attachments/assets/c4a1f6b4-adeb-457a-8a4f-c372b8b09b2e)
+
+LW r23, r21, 2
+
+![lw](https://github.com/user-attachments/assets/ecca3310-9c75-404c-9f35-fa2505a4ecee)
 
 
 
 
+BEQ r0, r0, 15
+
+![beq](https://github.com/user-attachments/assets/735caa9b-9f9b-42e4-8a31-34fac29b96ac)
 
 
+SLL r25, r21, r20
 
-  
+![sll](https://github.com/user-attachments/assets/53c4fcdf-3757-4c8f-8be2-014aca679426)
+
+SW r21, r19, 4 
+
+![sw](https://github.com/user-attachments/assets/1dde50bb-59ea-4a33-b30b-7f1bad9ff7b0)
+
+SRL r26, r21, r
+
+![srl](https://github.com/user-attachments/assets/f0d1d4f8-113f-48aa-8d56-a21c2e345a3c)
+
+
+ BNE r0, r19, 20 
+ 
+![bne](https://github.com/user-attachments/assets/cdac749b-6d74-44e3-a63f-b759363aedab)
+
+
+CONCLUSION-
+GTK waveforms of riscv ISA codes have been generated according to required instructions and posted
+
+ 
+
