@@ -257,5 +257,22 @@ SRL r26, r21, r
 CONCLUSION-
 GTK waveforms of riscv ISA codes have been generated according to required instructions and posted
 
+
+ # asic-design activity 4
+ 
+TASK- To write an Application in C, compile it with gcc and Risc-v gcc
+
+APPLICATION- To find prime numbers till the given digit
+
+STEP-1 The code to perform the given application
+![image](https://github.com/user-attachments/assets/4a44541c-b335-454d-aaa5-e3ad2f5dfd6b)
+
+STEP-2 Compiled using GCC
+![image](https://github.com/user-attachments/assets/c67b5cb7-cb3f-409f-af13-b9ddee8cacae)
+
+STEP-3 Compiled using RISC-V GCC and showing spike
+![image](https://github.com/user-attachments/assets/d96c2a5e-f75d-4899-8040-88e709b9e455)
+
+CONCLUSION- GCC and RISC-V GCC is compared for a simple program
  
 
