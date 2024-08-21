@@ -349,6 +349,7 @@ For decoding a particular instruction, it is necessary that the isntruction type
 4)Branch (B) type
 5)Upper immediate (U) type
 6)Jump (J) type
+![image](https://github.com/user-attachments/assets/2ca1e972-a6e8-406f-bdc5-48fd6e455355)
 
 #### **Instruction Type Decode**
 
@@ -369,11 +370,17 @@ For decoding a particular instruction, it is necessary that the isntruction type
 
 
 ### **Execute and Register file read/write**
+S
+The next task is to 'read from' and 'write into' the registers. In this operation, 2 read and write operation can be carried out simulatenously. The two src1_value/src2_value takes input from the two read register rf_read_data1/ rf_read_data2 and pass it on to the ALU unit. At present, ADDI and ADD is execute whose result is obtained in register rf_write_data. The figure below shows the input and output registers.
+![image](https://github.com/user-attachments/assets/d444be03-77d3-427f-b8b5-efd109dc4cb8)
+
 ![image](https://github.com/user-attachments/assets/5ab858a6-ab5c-4ac5-ada2-64dca10656aa)
 
 ![image](https://github.com/user-attachments/assets/b4321d89-83c6-4079-b838-72547c60f7f5)
 
 ### **Lab On ALU**
+![image](https://github.com/user-attachments/assets/daa77e3b-8b41-46d2-83cf-a9b7901c031b)
+
 ![image](https://github.com/user-attachments/assets/e6bbafbf-351d-46de-8496-1ab4a27b3a54)
 
 ![image](https://github.com/user-attachments/assets/0922abca-ee8b-4f98-a05f-02aafd67bf52)
@@ -382,6 +389,17 @@ For decoding a particular instruction, it is necessary that the isntruction type
 ![image](https://github.com/user-attachments/assets/8ffc5c26-20d6-435d-a26d-4eab55a28ee8)
 
 ### **ARRAYS**
+Typically, registers and memory are used in conjunction to implement arrays in RISC-V. Memory can be used to store arrays, where each element is kept at a distinct memory location. To access these components, the processor can employ load and store instructions. For instance, you could load a component into a register from a memory array, process it, and then put the outcome back into memory.
+
+Registers are another option for partially storing arrays. The elements of an array can be put into registers for quicker processing if the array is small enough to fit into the available registers. Since register access is typically faster than memory access, this strategy can enhance speed for specific processes.
+
+
+
+
+
+
+
+
 #### **Implementing Branch Instructions**
 ![image](https://github.com/user-attachments/assets/4f680717-2041-4ff0-8893-6f912ec13356)
 
