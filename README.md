@@ -284,4 +284,135 @@ STEP-3 Compiled using RISC-V GCC and showing spike
 
 CONCLUSION- GCC and RISC-V GCC is compared for a simple program
  
+ # asic-design activity 5
+ 
+**Digital Logic with TL Verilog and Makerchip**
+TL-Verilog is an advanced hardware description language created to streamline and expedite digital design by minimizing the complexity and verbosity found in traditional languages such as Verilog and VHDL. TL-Verilog offers a fresh perspective on design, prioritizing transactional-level modeling to simplify the management of intricate pipelined systems. With TL-Verilog, designers can concentrate on hardware behavior rather than detailed implementation specifics, benefiting from automatic pipeline management, a clean and succinct syntax, and robust abstraction features.
+
+
+In TL-Verilog, combinational circuits are designed to model logic where the output depends only on the current inputs, with no dependence on previous states or clock signals. TL-Verilog’s high-level abstractions and syntax simplify the description of these circuits compared to traditional hardware description languages.
+
+![image](https://github.com/user-attachments/assets/3ee5c984-c126-4ed5-a7aa-e9c99d6c72a8)
+
+**inverter**
+![Screenshot (2)](https://github.com/user-attachments/assets/09d96996-83a0-413d-beac-00dc2f4708e9)
+
+**2 input AND gate**
+![Screenshot (4)](https://github.com/user-attachments/assets/ea682154-7fc1-4ec0-9342-f56bd4fad663)
+
+**2 input OR gate**
+![Screenshot (4)](https://github.com/user-attachments/assets/c31ac25b-aa8f-4a2f-b65a-b16a31314722)
+
+
+**2:1 MUX**
+
+![Screenshot (6)](https://github.com/user-attachments/assets/33aac333-4280-4357-8f33-0879e11d57c7)
+
+**2:1 MUX using Vectors**
+![Screenshot (7)](https://github.com/user-attachments/assets/aae0cb7f-cca7-4f7a-bf96-e996bc70aa5a)
+
+
+## **Sequential Circuits in TL-Verilog**
+**Sequential Calculator**
+![Screenshot (8)](https://github.com/user-attachments/assets/25d7e0ff-ee02-43ef-b488-4baf45812824)
+
+**Pipelined Logic**
+![Screenshot (10)](https://github.com/user-attachments/assets/f77b03fb-e3f4-415a-a627-bc0aa7558e30)
+
+
+**Cycle Calculator**
+![Screenshot (11)](https://github.com/user-attachments/assets/50731452-56bc-40fc-9cfa-ed80eae87da7)
+
+## **Validity**
+![Screenshot (12)](https://github.com/user-attachments/assets/04b7386c-b500-4d46-98b4-2831fdfb6448)
+
+**validity in cycle calc**
+![Screenshot (14)](https://github.com/user-attachments/assets/70bd5b20-4d7c-47b1-8dd3-9545ca59b276)
+
+## **Day 4 Basic RISC V architecture**
+**Program Counter**
+The program counter is designed to increment by 4 to retrieve the subsequent instruction from memory, as illustrated in the image below. If a reset occurs, the program counter will be set to zero, preparing it to fetch the next instruction.
+
+![Screenshot (19)](https://github.com/user-attachments/assets/5991d013-d018-4ede-bdb6-092a67743fb2)
+
+**Fetch**
+![Screenshot (22)](https://github.com/user-attachments/assets/74971975-bd6c-42c6-9e6a-4e0c11108ac3)
+![Screenshot (23)](https://github.com/user-attachments/assets/1a76a468-4d6f-4798-8c46-731c21e6f94b)
+
+
+### **Decode**
+For decoding a particular instruction, it is necessary that the isntruction type and format is known to the processor. The decoding is a crucial part and has to be done properly according to the given format to avoid error. There are 6 instructions type in RISC-V :
+
+1)Register (R) type
+2)Immediate (I) type
+3)Store (S) type
+4)Branch (B) type
+5)Upper immediate (U) type
+6)Jump (J) type
+
+#### **Instruction Type Decode**
+
+![Screenshot (24)](https://github.com/user-attachments/assets/a5f7e2a1-2286-4d95-b24e-6cdce62e0735)
+
+#### **INSTRUCTION IMMEDIATE DECODE**
+![Screenshot (26)](https://github.com/user-attachments/assets/7d4f9901-ef19-499a-af0a-ffa84a79c27d)
+
+#### **INSTRUCTION DECODE**
+![Screenshot (28)](https://github.com/user-attachments/assets/98adaad6-e9ec-4ca0-9eba-44a2e84e59dc)
+![Screenshot (29)](https://github.com/user-attachments/assets/e4f45ac3-3200-4990-a945-5eabd1496f0c)
+
+#### **Decode Instruction Field Based**
+![Screenshot (30)](https://github.com/user-attachments/assets/f58133d7-382d-4fe0-b38a-800140c50370)
+
+#### **Individual Instruction Decode**
+![Screenshot (31)](https://github.com/user-attachments/assets/270cff4a-de57-4319-8369-bc708cf95536)
+
+
+### **Execute and Register file read/write**
+![image](https://github.com/user-attachments/assets/5ab858a6-ab5c-4ac5-ada2-64dca10656aa)
+
+![image](https://github.com/user-attachments/assets/b4321d89-83c6-4079-b838-72547c60f7f5)
+
+### **Lab On ALU**
+![image](https://github.com/user-attachments/assets/e6bbafbf-351d-46de-8496-1ab4a27b3a54)
+
+![image](https://github.com/user-attachments/assets/0922abca-ee8b-4f98-a05f-02aafd67bf52)
+
+### **Register File Write**
+![image](https://github.com/user-attachments/assets/8ffc5c26-20d6-435d-a26d-4eab55a28ee8)
+
+### **ARRAYS**
+#### **Implementing Branch Instructions**
+![image](https://github.com/user-attachments/assets/4f680717-2041-4ff0-8893-6f912ec13356)
+
+#### **Complementing Branch Instructions**
+![image](https://github.com/user-attachments/assets/f0ab1c45-82a8-4a8f-9724-4881a2709b4a)
+
+### Testbench
+![image](https://github.com/user-attachments/assets/5757c12c-4c06-4348-be89-4277a6ab13f9)
+
+## DAY-5 Complete Pipelined RiscV CPU Micro-architecture
+### **3 cycle valid signal**
+![Screenshot (34)](https://github.com/user-attachments/assets/6c9ec6e5-a216-477f-8c0a-97c91c1512e3)
+![Screenshot (35)](https://github.com/user-attachments/assets/164163e8-9129-4d3f-96d9-184146bad631)
+![Screenshot (36)](https://github.com/user-attachments/assets/8fe0858a-f608-4704-a394-c41348a741c3)
+### **generating valid signals for each instruction**
+![Screenshot (38)](https://github.com/user-attachments/assets/62a3dad8-f325-48b7-b7cc-fcbecc76a447)
+**For Register File Bypass To Address Rd-After-Wr Hazard**
+![Screenshot (40)](https://github.com/user-attachments/assets/cadac882-7aca-494d-b27d-3d098e6ca05d)
+**including load/store instructions:**
+![Screenshot (41)](https://github.com/user-attachments/assets/5f6c3f23-a56a-429c-85d8-5693f84c13b2)
+![Screenshot (42)](https://github.com/user-attachments/assets/91084491-21b1-4c99-84fa-e542becbd722)
+![Screenshot (43)](https://github.com/user-attachments/assets/d35e8d8c-086e-4521-a596-7daa4c26e7e4)
+
+
+
+### **Completing the RISC-V CPU**
+
+![Screenshot (41)](https://github.com/user-attachments/assets/df105006-50cf-4765-ae95-799fb3ba9ad8)
+
+![Screenshot (42)](https://github.com/user-attachments/assets/c9fd46d6-da9c-4324-be10-577f8b00f75d)
+
+
+
 
