@@ -432,5 +432,26 @@ Registers are another option for partially storing arrays. The elements of an ar
 ![Screenshot (42)](https://github.com/user-attachments/assets/c9fd46d6-da9c-4324-be10-577f8b00f75d)
 
 
+# asic-design assignment activity 6
+Conversion from TLV into Verilog using Sandpiper-SaaS compiler, compile using Iverilog and plot the waveforms using GTKwave:
+## Step-1 
+Cloning
+
+![WhatsApp Image 2024-08-26 at 11 54 08 PM (1)](https://github.com/user-attachments/assets/81a2e0b2-2b42-4e39-9a7f-6c560e7053b7)
+
+## Step-2
+The command used to convert the code is given below:
+![WhatsApp Image 2024-08-26 at 11 54 08 PM](https://github.com/user-attachments/assets/eda4b1a7-1ee9-4155-9289-5b6a18f434de)
+## Step-3
+The command to compile the verilog code and project in gtkwave is as shown below:
+![WhatsApp Image 2024-08-26 at 11 54 08 PM (2)](https://github.com/user-attachments/assets/86f3487d-bcd1-421e-8fde-1bea3bac7a93)
+## Output
+
+![WhatsApp Image 2024-08-26 at 11 53 40 PM](https://github.com/user-attachments/assets/fab7536c-4152-47e6-8d9a-1dad139c4e7b)
+## Output in maker chip IDE
+![image](https://github.com/user-attachments/assets/16ea2bd4-084d-4ed3-8716-5e665ec0be1e)
+
+![image](https://github.com/user-attachments/assets/f2bfb0e2-c1d2-4da7-801c-e5cb941b65e0)
+
 
 
