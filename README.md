@@ -451,7 +451,19 @@ The command to compile the verilog code and project in gtkwave is as shown below
 ## Output in maker chip IDE
 ![image](https://github.com/user-attachments/assets/16ea2bd4-084d-4ed3-8716-5e665ec0be1e)
 
+
+
+
 ![image](https://github.com/user-attachments/assets/f2bfb0e2-c1d2-4da7-801c-e5cb941b65e0)
+
+
+# asic-design assignment activity 7
+generate waveform for DAC and PLL peripheral for Risc-V processor.
+Risc-V core inside the VSDbabySoc and observe the ports of peripherals: 
+![Screenshot from 2024-09-02 21-57-12](https://github.com/user-attachments/assets/5cc02e1b-608b-4fb5-9141-185622017478)
+
+Below is the output for the waveforms:
+![Screenshot from 2024-09-02 21-58-36](https://github.com/user-attachments/assets/2cc352e2-02f9-42f8-914b-1a8506e878bf)
 
 
 
