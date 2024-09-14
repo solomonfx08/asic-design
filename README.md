@@ -83,12 +83,11 @@ STEP 1
   ![dsad](https://github.com/user-attachments/assets/13767734-47ef-4910-af39-73706b0ed6ec)
 
   1.2 Inititing obj dump
+  
   ![2dsad](https://github.com/user-attachments/assets/39cee9eb-71d9-4ed6-ab6c-2d3bb003decd)
 
-  1.3 3: Read the initial contents of the register a0 and then press enter to run the instruction.
-
-1. 4: Verify that the instruction is executed properly.
-
+1.3: Read the initial contents of the register a0 and then press enter to run the instruction.
+1.4: Verify that the instruction is executed properly.
 1.5: Now read the initial contents of sp register & run the next instruction.
   
  ![3dsad](https://github.com/user-attachments/assets/37d062fe-6fb8-4956-99ea-8d1009440e1f)
