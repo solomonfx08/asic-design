@@ -80,23 +80,26 @@ Conclusion -
 STEP 1
   1.1 loading the file and initiating spike
   
-  ![1 1](https://github.com/user-attachments/assets/cf532c70-b9fd-44b1-9d9d-5db14a0e3458)
+  ![dsad](https://github.com/user-attachments/assets/13767734-47ef-4910-af39-73706b0ed6ec)
 
   1.2 Inititing obj dump
-  
-  ![1 2_objdump](https://github.com/user-attachments/assets/e47a7bc6-a24c-4fe0-8625-0ce3a9c079f7)
-  
-  1.3 spike debug
-  
-  ![1 3](https://github.com/user-attachments/assets/a54f15b1-088d-4460-8615-7a6c40fa6089)
+  ![2dsad](https://github.com/user-attachments/assets/39cee9eb-71d9-4ed6-ab6c-2d3bb003decd)
 
-  1.4 initialising from 0 to 100b0
-  
-  ![1 5](https://github.com/user-attachments/assets/defbffca-b603-45c2-992b-7ec7ca7141c3)
+  1.3 3: Read the initial contents of the register a0 and then press enter to run the instruction.
 
-  1.5 error - auic getting loaded insted of lui need help!
+1. 4: Verify that the instruction is executed properly.
+
+1.5: Now read the initial contents of sp register & run the next instruction.
   
-Conclusion-- encountering error
+ ![3dsad](https://github.com/user-attachments/assets/37d062fe-6fb8-4956-99ea-8d1009440e1f)
+
+
+  1.6: Using calculator ensure that the difference between initial and final contents of the sp register should be as per the intruction set.
+  
+![4dsad](https://github.com/user-attachments/assets/b0bd5e79-2556-46ab-927d-8d2dbab8e903)
+
+
+  
 
 
 
