@@ -1240,3 +1240,47 @@ endmodule
 
 - DOT viewer
 ![Screenshot from 2024-10-22 02-29-31](https://github.com/user-attachments/assets/2278076b-dd60-4039-a73e-105f7849ff15)
+
+
+
+
+ # asic-design activity 9
+ Synthesize the RISC-V core and compare its output with functional simulations.
+
+ Steps:
+ 1. Copy source files:
+    First copy the src folder from VSDBabySoC directory to your VLSI folder. Then, move this folder into the sky130RTLDesignAndSynthesisWorkshop directory using the following commands:
+sudo -i
+cd /home/nikhil-bhusari/VLSI/
+cp -r src sky130RTLDesignAndSynthesisWorkshop/
+2. Navigate to the target directory:
+   Move to the correct directory to begin the synthesis process:
+3. Start YOSYS
+4. Load the Verilog design files and start Synthesis
+	   ![Screenshot from 2024-10-25 22-49-46](https://github.com/user-attachments/assets/d5a7466b-0edb-41c2-ba69-2e942c3e809f)
+   ![Screenshot from 2024-10-25 22-49-52](https://github.com/user-attachments/assets/1482573c-1939-4c34-b179-7483d71cce41)
+
+ GVIM file
+ ![image](https://github.com/user-attachments/assets/47d09a77-ccc3-4a40-987c-287757e2e6b9)
+ ![Screenshot from 2024-10-25 22-51-23](https://github.com/user-attachments/assets/e353f168-bc06-4fae-8c1e-de7ae3b6b211)
+
+ The Heirarchy of the Net list is shown below :
+ ![Screenshot from 2024-10-26 00-35-43](https://github.com/user-attachments/assets/2c028ca9-933c-48d0-aa7c-0824ad6b931d)
+
+5.Use iverilog to simulate the synthesized RISC-V and generate the waveform:
+![Screenshot from 2024-10-26 00-11-37](https://github.com/user-attachments/assets/dddad07c-69a8-4f44-a0e4-15fd332978b9)
+
+"Functional Simulations (Previously done in LAB-7)":
+Command Steps:
+cd ~
+cd VSDBabySoC
+iverilog -o ./pre_synth_sim.out -DPRE_SYNTH_SIM src/module/testbench.v -I src/include -I src/module/
+./pre_synth_sim.out
+gtkwave pre_synth_sim.vcd
+
+COMPARISON of Functionality vs Synthesized output waveform:
+
+![dasdsad](https://github.com/user-attachments/assets/56b7086f-6318-478b-8807-03bb6a54abc1)
+![Screenshot from 2024-10-26 00-11-37](https://github.com/user-attachments/assets/52685894-0824-4e84-ba77-1f7d8b16c0c1)
+
+CONCLUSION : The Functionality vs Synthesized output waveform matches, i.e, O1 = O2.
