@@ -1278,9 +1278,58 @@ iverilog -o ./pre_synth_sim.out -DPRE_SYNTH_SIM src/module/testbench.v -I src/in
 ./pre_synth_sim.out
 gtkwave pre_synth_sim.vcd
 
+
+
+
 COMPARISON of Functionality vs Synthesized output waveform:
 
 ![dasdsad](https://github.com/user-attachments/assets/56b7086f-6318-478b-8807-03bb6a54abc1)
 ![Screenshot from 2024-10-26 00-11-37](https://github.com/user-attachments/assets/52685894-0824-4e84-ba77-1f7d8b16c0c1)
 
 CONCLUSION : The Functionality vs Synthesized output waveform matches, i.e, O1 = O2.
+
+
+
+# asic-design activity 10
+Static Timing Analysis for a Synthesized RISC-V Core with OpenSTA
+## Tools Installation
+### CUDD Download:-
+cd
+tar xvfz cudd-3.0.0.tar.gz
+cd cudd-3.0.0
+./configure
+make
+### openSTA:-
+cd
+sudo apt-get install cmake clang gcc tcl swig bison flex
+
+git clone https://github.com/parallaxsw/OpenSTA.git
+cd OpenSTA
+cmake -DCUDD_DIR=/home/solo/cudd-3.0.0
+make
+app/sta
+![Screenshot from 2024-10-28 21-43-56](https://github.com/user-attachments/assets/e3f833db-ea8b-4823-9f21-e6f6a9c1b1cb)
+
+## Steps to do Timing Analysis
+Clock period = 10.55ns
+Setup uncertainty and clock transition will be 5% of clock
+Hold uncertainty and data transition will be 8% of clock.
+ ### CODE-
+ cd /home/solo/OpenSTA/app
+./sta
+
+read_liberty /home/solo/OpenSTA/lab10/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog /home/solo/OpenSTA/lab10/likith_riscv_netlist.v
+link_design rvmyth
+
+create_clock -name clk -period 10.55 [get_ports clk]
+set_clock_uncertainty [expr 0.05 * 10.55] -setup [get_clocks clk]
+set_clock_uncertainty [expr 0.08 * 10.55] -hold [get_clocks clk]
+set_clock_transition [expr 0.05 * 10.55] [get_clocks clk]
+set_input_transition [expr 0.08 * 10.55] [all_inputs]
+
+report_checks -path_delay max
+report_checks -path_delay min
+
+![Screenshot from 2024-10-28 21-56-13](https://github.com/user-attachments/assets/bcb67230-ea13-467a-abfa-d41937c9a5e8)
+![Screenshot from 2024-10-28 21-56-29](https://github.com/user-attachments/assets/ca08a3cc-10fc-448a-aba2-43a42a43c5c5)
