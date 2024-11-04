@@ -1328,8 +1328,35 @@ set_clock_uncertainty [expr 0.08 * 10.55] -hold [get_clocks clk]
 set_clock_transition [expr 0.05 * 10.55] [get_clocks clk]
 set_input_transition [expr 0.08 * 10.55] [all_inputs]
 
+
 report_checks -path_delay max
 report_checks -path_delay min
 
 ![Screenshot from 2024-10-28 21-56-13](https://github.com/user-attachments/assets/bcb67230-ea13-467a-abfa-d41937c9a5e8)
 ![Screenshot from 2024-10-28 21-56-29](https://github.com/user-attachments/assets/ca08a3cc-10fc-448a-aba2-43a42a43c5c5)
+
+
+
+# asic-design activity 11
+Static Timing Analysis for the synthesized VSDBabySoC with OpenSTA
+TERMINAL WINDOW
+![Screenshot from 2024-11-05 00-04-24](https://github.com/user-attachments/assets/dcc2e422-9346-4216-b831-79f5c8897df1)
+![Screenshot from 2024-11-05 00-04-15](https://github.com/user-attachments/assets/c2361f4b-4b1a-4006-984a-977fbd2319b6)
+
+
+TCL FILE
+![Screenshot from 2024-11-05 00-05-34](https://github.com/user-attachments/assets/ec5eceef-cde1-4d9a-b3c1-8546a66d9b42)
+
+
+
+CONSTRAINT FILE
+![Screenshot from 2024-11-05 00-04-52](https://github.com/user-attachments/assets/f91009cf-93e0-4391-900c-9b3f77a68996)
+
+VALUES
+![Screenshot from 2024-11-05 00-03-16](https://github.com/user-attachments/assets/7934527a-81c4-4043-9223-45ce2d9d173b)
+
+OUTPUT GRAPHS
+![1](https://github.com/user-attachments/assets/82d91dab-ab43-48f1-9e31-edf3f4c9a5e7)
+
+![2](https://github.com/user-attachments/assets/710ee4ee-8aed-4eec-ac64-a086d8b0bd11)
+![3](https://github.com/user-attachments/assets/01ffb185-41c0-4872-89a2-eb37d93b7071)
