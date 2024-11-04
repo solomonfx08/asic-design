@@ -1338,24 +1338,24 @@ report_checks -path_delay min
 
 
 # asic-design activity 11
-Static Timing Analysis for the synthesized VSDBabySoC with OpenSTA
-TERMINAL WINDOW
+## Static Timing Analysis for the synthesized VSDBabySoC with OpenSTA
+### TERMINAL WINDOW
 ![Screenshot from 2024-11-05 00-04-24](https://github.com/user-attachments/assets/dcc2e422-9346-4216-b831-79f5c8897df1)
 ![Screenshot from 2024-11-05 00-04-15](https://github.com/user-attachments/assets/c2361f4b-4b1a-4006-984a-977fbd2319b6)
 
 
-TCL FILE
+### TCL FILE
 ![Screenshot from 2024-11-05 00-05-34](https://github.com/user-attachments/assets/ec5eceef-cde1-4d9a-b3c1-8546a66d9b42)
 
 
 
-CONSTRAINT FILE
+### CONSTRAINT FILE
 ![Screenshot from 2024-11-05 00-04-52](https://github.com/user-attachments/assets/f91009cf-93e0-4391-900c-9b3f77a68996)
 
-VALUES
+### VALUES
 ![Screenshot from 2024-11-05 00-03-16](https://github.com/user-attachments/assets/7934527a-81c4-4043-9223-45ce2d9d173b)
 
-OUTPUT GRAPHS
+### OUTPUT GRAPHS
 ![1](https://github.com/user-attachments/assets/82d91dab-ab43-48f1-9e31-edf3f4c9a5e7)
 
 ![2](https://github.com/user-attachments/assets/710ee4ee-8aed-4eec-ac64-a086d8b0bd11)
