@@ -1360,3 +1360,132 @@ report_checks -path_delay min
 
 ![2](https://github.com/user-attachments/assets/710ee4ee-8aed-4eec-ac64-a086d8b0bd11)
 ![3](https://github.com/user-attachments/assets/01ffb185-41c0-4872-89a2-eb37d93b7071)
+
+
+# asic-design activity 12
+## Day 1 - Introduction to open-source EDA, OpenLANE and Sky130 PDK
+
+1) Run 'picorv32a' design synthesis using OpenLANE flow and generate necessary outputs. Commands to invoke the OpenLANE flow and perform synthesis
+
+![1 1](https://github.com/user-attachments/assets/fb428c37-a254-4874-af43-6e2bdf623f03)
+![1 1 2](https://github.com/user-attachments/assets/80e22495-3281-4be7-a334-7c30a6b3a96b)
+![1 1 3](https://github.com/user-attachments/assets/b9d5198b-2421-46e1-afd1-da7b4158a640)
+
+2) Calculate the flop ratio. Screenshots of synthesis statistics report file with required values
+
+   ![Screenshot 2024-11-13 155303](https://github.com/user-attachments/assets/f69d544b-b161-4c47-bbeb-fc41a354bb2b)
+
+   Calculation of Flop Ratio and DFF % from synthesis statistics report file
+
+Flop Ratio = 1613/14876 = 0.108429685 Percentage of DFFs = 0.108429685*100 = 10.8429685
+
+
+## Day 2 - Good floorplan versus bad floorplan, and introduction to library cells
+
+1) Run 'picorv32a' design floorplan using OpenLANE flow and generate necessary outputs. Commands to invoke the OpenLANE flow and perform floorplan
+   ![2 1 2](https://github.com/user-attachments/assets/d182247f-0c69-44b4-b679-4e43e2cf1916)
+   ![1 1 4](https://github.com/user-attachments/assets/83237242-3fcb-484b-b7cf-65a92472caa7)
+2) Calculate the die area in microns from the values in floorplan def. Screenshot of contents of floorplan def
+   ![image](https://github.com/user-attachments/assets/21607bd9-bdd9-4d2c-90d6-24ca79973074)
+   1000 unit distance = 1 Micron Die width in unit distance = 660685-0 = 660685 Die height in unit distance = 671405-0 = 671405 Distance in microns = Value in unit distance/1000 Die width in microns = 660685/1000 = 660.685 Microns Die heigth in microns = 671.405 Microns
+3) Load generated floorplan def in magic tool and explore the floorplan. Commands to load floorplan def in magic in another terminal
+   ![2 1 3](https://github.com/user-attachments/assets/9c075f73-5905-4be1-bb03-4f05b533ccbd)
+Equidistant placement of ports
+
+![image](https://github.com/user-attachments/assets/73750aa5-e076-42c9-8917-9cd849574614)
+
+Port layer as set through config.tcl
+![image](https://github.com/user-attachments/assets/013a8f74-59ee-4df9-afdd-d35b9206f624)
+Decap Cells and Tap Cells
+![image](https://github.com/user-attachments/assets/0193f61c-c7e4-4b27-a9cc-177e8b5f53c8)
+
+Diagonally equidistant Tap cells
+![image](https://github.com/user-attachments/assets/a46bf596-c06c-49c8-bf27-5faa711f4098)
+
+4) Run 'picorv32a' design congestion aware placement using OpenLANE flow and generate necessary outputs. Command to run placement
+   ![2 1 4](https://github.com/user-attachments/assets/7b53b712-e96b-4c88-bd0f-02482c82059e)
+5) Load generated placement def in magic tool and explore the placement. Commands to load placement def in magic in another terminal
+   ![2 1 5](https://github.com/user-attachments/assets/8ab707c0-fb49-4db7-a400-7c5c78fc7a7a)
+![image](https://github.com/user-attachments/assets/242fad22-6f7e-4a66-a41f-a4e9bbfb21ac)
+
+## Day 3 - Design library cell using Magic Layout and ngspice characterization
+
+1) Clone custom inverter standard cell design from github repository
+   ![3 1](https://github.com/user-attachments/assets/bb78b3f2-6274-47ee-a9bc-a0a176b2704e)
+
+2)Load the custom inverter layout in magic and explore.
+	![3 2](https://github.com/user-attachments/assets/fdf8e9f9-89bc-4af2-93fa-7e2c37dd0cab)
+
+3) NMOS and PMOS identified, Output Y connectivity to PMOS and NMOS drain verified, PMOS source connectivity to VDD (here VPWR) verified, NMOS source connectivity to VSS (here VGND) verified
+   ![3 3](https://github.com/user-attachments/assets/63c13ed7-d2c6-4167-a8e4-13d026193b97)
+   ![3 4](https://github.com/user-attachments/assets/b33f71f8-b2b3-4d7a-b77e-153682d7de16)
+   ![3 5](https://github.com/user-attachments/assets/79b51505-c43e-4f74-a41c-1e7884569dcd)
+   ![3 6](https://github.com/user-attachments/assets/0082e115-71ca-45d8-9058-5b23c4bf63da)
+
+
+4) Spice extraction of inverter in magic. Commands for spice extraction of the custom inverter layout to be used in tkcon window of magic
+   ![3 7](https://github.com/user-attachments/assets/2880a212-dca7-443c-9521-9027ecca041e)
+
+5) Screenshot of created spice file
+ ![3 8](https://github.com/user-attachments/assets/ab3c03f7-23c7-40e7-91f0-0b0bd34d762f)
+
+6) Post-layout ngspice simulations. Commands for ngspice simulation
+   ![3 13](https://github.com/user-attachments/assets/5e66d95c-7633-4a4c-b865-b3610fd87117)
+Screenshot of generated plot
+![3 14](https://github.com/user-attachments/assets/801df72b-bbf4-4af0-85a2-bdbc31458f3c)
+Rise transition time calculation
+
+Rise transition time = Time taken for output to rise to 80% - Time taken for output to rise to 20%
+
+20% of output = 660 mV 80% of output = 2.64 V
+
+20% Screenshots
+
+![3 15](https://github.com/user-attachments/assets/0c16984f-4b2b-410d-9422-54482d2a47d3)
+![3 16](https://github.com/user-attachments/assets/99c1a3db-fe90-496b-9552-3faa156717d0)
+
+
+80% screenshots
+![3 18](https://github.com/user-attachments/assets/755ff3f7-6903-4562-9da5-2c4434c5d732)
+![3 19](https://github.com/user-attachments/assets/dbf13256-2475-4d3e-9e2e-0fc868140c7c)
+
+Rise transition time =
+
+Fall transition time calculation
+
+Fall transition time = Time taken for output to fall to 20% - Time taken for output to fall to 80%
+
+20% of output = 660 mV 80% of output = 2.64 V
+
+20% screenshots
+
+![3 20](https://github.com/user-attachments/assets/aeb3811d-bdbf-4cc8-8548-a54f60c47beb)
+![3 21](https://github.com/user-attachments/assets/357d27b3-a106-403a-8dc1-ec0790d9b305)
+80% screenshots
+![3 22](https://github.com/user-attachments/assets/4dd45ffe-d4fb-4a80-be8c-5db3e6937c28)
+![3 23](https://github.com/user-attachments/assets/a1e27d6e-6fea-4c7a-aade-8d48c9999d6a)
+
+Fall transition time =
+
+Rise Cell Delay Calculation
+
+Rise Cell Delay = Time take for output to rise to 50% - Time taken for input to fall to 50%
+
+50% of 3.3 V = 1.65 V
+
+50% screenshots
+
+![3 24](https://github.com/user-attachments/assets/bad797ab-9a13-44f9-abed-6e6f3ebae425)
+![3 26](https://github.com/user-attachments/assets/3a09e04d-be96-4a5c-992b-5955e49b1b52)
+
+7) Find problem in the DRC section of the old magic tech file for the skywater process and fix them.
+   ![3 27](https://github.com/user-attachments/assets/a4fe9d40-3a6e-4e81-a999-df8dd86f6089)
+![3 28](https://github.com/user-attachments/assets/ec594bbc-8808-4197-ae8a-a6b93ea76836)
+Incorrectly implemented poly.9 simple rule correction
+![Screenshot 2024-11-13 194021](https://github.com/user-attachments/assets/3e7e175a-cd4a-45f7-9276-3bd956802f01)
+
+8)making changes
+
+![3 31](https://github.com/user-attachments/assets/609d0b1a-196e-49e4-a84a-b4a63f95e85d)
+![3 30](https://github.com/user-attachments/assets/53602ca2-83d1-4535-b913-45450d1c8d92)
+![3 29](https://github.com/user-attachments/assets/c7ebd684-ba8b-4fba-b662-6527a3d95eab)
