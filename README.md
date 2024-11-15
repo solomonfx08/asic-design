@@ -1494,15 +1494,10 @@ Incorrectly implemented poly.9 simple rule correction
 
 1. Fix up small DRC errors and verify the design is ready to be inserted into our flow.
 
-   Contents of tracks.info of sky130_fd_sc_hd
-   using
-   	//cd Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign
-	cd ../../pdks/sky130A/libs.tech/openlane/sky130_fd_sc_hd/
-	less tracks.info//
+  
    ![5 1](https://github.com/user-attachments/assets/6aef5355-c525-4b76-91ea-7ca905a1b1bc)
 Commands for tkcon window to set grid as tracks of locali layer
-using
-//grid 0.46um 0.34um 0.23um 0.17um
+
 ![5 2](https://github.com/user-attachments/assets/4a9ba92f-4b03-40c2-8fda-aa72bc72fdf0)
 ![5 3](https://github.com/user-attachments/assets/e2bebc16-b3c0-4c20-b527-c84c8b916013)
 ![5 4](https://github.com/user-attachments/assets/b7414559-fc4e-49fc-b841-70ded0dbb071)
@@ -1510,9 +1505,9 @@ Condition 1 verified
 ![5 5](https://github.com/user-attachments/assets/955f4251-7afd-4f5a-993a-c8608cc791c9)
 
 2) Saving it by giving a custom name
-//save sky130_soloinv.mag
+
 3) Generate lef from the layout.
-  // lef write
+
    ![5 6](https://github.com/user-attachments/assets/8aae8e5b-faf3-474e-9a02-ce46f29d1e02)
  ![5 7](https://github.com/user-attachments/assets/31be2bd3-cb79-4fa9-a759-3595047de9a8)
 ![5 8](https://github.com/user-attachments/assets/e3d19f73-cb2f-407f-8275-f6a5129a83e5)
@@ -1520,54 +1515,13 @@ Condition 1 verified
 ![5 9](https://github.com/user-attachments/assets/9904f591-0117-402d-8d39-76501d0bd498)
 
 6) Modify config.tcl:
-# Design
-set ::env(DESIGN_NAME) "picorv32a"
 
-set ::env(VERILOG_FILES) "./designs/picorv32a/src/picorv32a.v"
-set ::env(SDC_FILES) "./designs/picorv32a/src/picorv32a.sdc"
-
-
-set ::env(CLOCK_PERIOD) "5.000"
-set ::env(CLOCK_PORT) "clk"
-
-set ::env(CLOCK_NET) $::env(CLOCK_PORT) 
-
-
-set ::env(LIB_SYNTH) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib "
-set ::env(LIB_FASTEST) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__fast.lib"
-set ::env(LIB_SLOWEST) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__slow.lib "
-set ::env(LIB_TYPICAL) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib"
-
-set ::env(EXTRA_LEFS) [glob $::env(OPENLANE_ROOT)/designs/$::env(DESIGN_NAME)/src/*.lef]   ## this is the new line added to the existing config.tcl file
-
-set filename $::env(OPENLANE_ROOT)/designs/$::env(DESIGN_NAME)/$::env(PDK)_$::env(STD_CELL_LIBRARY)_config.tcl
-if { [file exists $filename] == 1 } {
-  source $filename
-}
 7) Now, run openlane flow synthesis:
-//cd Desktop/work/tools/openlane_working_dir/openlane
-docker
-./flow.tcl -interactive
-package require openlane 0.9
-prep -design picorv32a
-set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
-add_lefs -src $lefs
-run_synthesis//
+
   ![5 10](https://github.com/user-attachments/assets/0e367b45-c83e-4e98-80a5-1dc4e55891ac)
 
   8) Remove/reduce the newly introduced violations with the introduction of custom inverter cell by modifying design parameters.
-//prep -design picorv32a -tag 10-11_15-53 -overwrite
-set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
-add_lefs -src $lefs
-echo $::env(SYNTH_STRATEGY)
-set ::env(SYNTH_STRATEGY) "DELAY 3"
-echo $::env(SYNTH_BUFFERING)
-echo $::env(SYNTH_SIZING)
 
-set ::env(SYNTH_SIZING) 1
-
-echo $::env(SYNTH_DRIVING_CELL)
-run_synthesis//
 
 Screenshot of merged.lef in tmp directory with our custom inverter as macro
 ![5 11](https://github.com/user-attachments/assets/090a9f54-dfcf-48bc-b721-ebe9c8d00be8)
@@ -1579,8 +1533,7 @@ Screenshots of commands run
 
 
 9) open a new terminal and run the below commands to load placement def in magic
-//cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/24-03_10-03/results/placement/
-magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &//
+
 ![5 16](https://github.com/user-attachments/assets/24d46ef8-f5a0-47be-b945-f3a688bc07fb)
 ![5 17](https://github.com/user-attachments/assets/7eae6e09-e846-4ecf-ba4b-69abaf9cf03b)
 Now, select the cell and type expand in tkcon window to view internal layers of cells
@@ -1588,56 +1541,12 @@ Now, select the cell and type expand in tkcon window to view internal layers of 
 ![5 18](https://github.com/user-attachments/assets/6ef3497d-fb57-412c-9446-8edfe7380ae5)
 
 10) Timing analysis with ideal clocks using openSTA
--Contents of my_base.sdc:
-set ::env(CLOCK_PORT) clk
-set ::env(CLOCK_PERIOD) 12.000
-set ::env(SYNTH_DRIVING_CELL) sky130_fd_sc_hd__inv_8
-set ::env(SYNTH_DRIVING_CELL_PIN) Y
-set ::env(SYNTH_CAP_LOAD) 17.65
-create_clock [get_ports $::env(CLOCK_PORT)]  -name $::env(CLOCK_PORT)  -period $::env(CLOCK_PERIOD)
-set IO_PCT  0.2
-set input_delay_value [expr $::env(CLOCK_PERIOD) * $IO_PCT]
-set output_delay_value [expr $::env(CLOCK_PERIOD) * $IO_PCT]
-puts "\[INFO\]: Setting output delay to: $output_delay_value"
-puts "\[INFO\]: Setting input delay to: $input_delay_value"
 
-
-set clk_indx [lsearch [all_inputs] [get_port $::env(CLOCK_PORT)]]
-#set rst_indx [lsearch [all_inputs] [get_port resetn]]
-set all_inputs_wo_clk [lreplace [all_inputs] $clk_indx $clk_indx]
-#set all_inputs_wo_clk_rst [lreplace $all_inputs_wo_clk $rst_indx $rst_indx]
-set all_inputs_wo_clk_rst $all_inputs_wo_clk
-
-
-# correct resetn
-set_input_delay $input_delay_value  -clock [get_clocks $::env(CLOCK_PORT)] $all_inputs_wo_clk_rst
-#set_input_delay 0.0 -clock [get_clocks $::env(CLOCK_PORT)] {resetn}
-set_output_delay $output_delay_value  -clock [get_clocks $::env(CLOCK_PORT)] [all_outputs]
-
-# TODO set this as parameter
-set_driving_cell -lib_cell $::env(SYNTH_DRIVING_CELL) -pin $::env(SYNTH_DRIVING_CELL_PIN) [all_inputs]
-set cap_load [expr $::env(SYNTH_CAP_LOAD) / 1000.0]
-puts "\[INFO\]: Setting load to: $cap_load"
-set_load  $cap_load [all_outputs]
-
-- Commands to run STA:
-  cd Desktop/work/tools/openlane_working_dir/openlane
-sta pre_sta.conf
 
 ![5 24](https://github.com/user-attachments/assets/fc18f940-558d-43fb-a638-6c4bab6e49dd)
 
 
 11) We now try to optimise synthesis.
-  //  cd Desktop/work/tools/openlane_working_dir/openlane
-docker
-./flow.tcl -interactive
-prep -design picorv32a -tag 25-03_18-52 -overwrite
-set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
-add_lefs -src $lefs
-set ::env(SYNTH_SIZING) 1
-set ::env(SYNTH_MAX_FANOUT) 4
-echo $::env(SYNTH_DRIVING_CELL)
-run_synthesis//
 
 ![5 21](https://github.com/user-attachments/assets/fe0875c1-6e04-4744-b2b7-0b3d5274f282)
 
@@ -1654,36 +1563,82 @@ run_synthesis//
 
 
 13)  Replace the old netlist with the new netlist generated after timing ECO fix and implement the floorplan, placement and cts.
-	Run the following commands:
-     	//cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/25-03_18-52/results/synthesis/
-	ls
-	cp picorv32a.synthesis.v picorv32a.synthesis_old.v
-	ls
-	Commands to write verilog:
-	//write_verilog /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/25-03_18-			 	52/results/synthesis/picorv32a.synthesis.v
-	exit//
+
 Verified that the netlist is overwritten
 
  ![5 26](https://github.com/user-attachments/assets/a6922f2f-bf5b-4583-9dd5-5ddc512b9e6b)
 Now, run the following commands:
-//cd Desktop/work/tools/openlane_working_dir/openlane
-docker
-./flow.tcl -interactive
-prep -design picorv32a -tag 25-03_18-52 -overwrite
-set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
-add_lefs -src $lefs
-set ::env(SYNTH_STRATEGY) "DELAY 3"
-set ::env(SYNTH_SIZING) 1
-run_synthesis
-init_floorplan
-place_io
-tap_decap_or
-run_placement
-run_cts//
+
 ![v1](https://github.com/user-attachments/assets/7406415b-bfea-44d0-a840-5406788e823f)
 ![v2](https://github.com/user-attachments/assets/dac4a421-2c3d-4ec3-8fea-a17c1a764ed1)
 ![v3](https://github.com/user-attachments/assets/a25ec402-b268-4431-890b-57a74119f9d7)
 ![v4](https://github.com/user-attachments/assets/585ba1b2-bda4-4008-8123-75cb28394d23)
 ![v5](https://github.com/user-attachments/assets/c6bee699-15b1-478e-9884-a67048fbbb89)
 ![v6](https://github.com/user-attachments/assets/82993611-24c8-41f4-9b94-61a6f837bfb4)
+
+14) Setup timing analysis using real clocks
+    ![v7](https://github.com/user-attachments/assets/0a996151-7888-4457-a280-d74942da8e14)
+    ![v8](https://github.com/user-attachments/assets/a713bd0a-2507-472b-8e2f-be3fff8ca228)
+    ![v9](https://github.com/user-attachments/assets/24a4b227-ad6a-4e7d-bb6c-8adf62967690)
+![v10](https://github.com/user-attachments/assets/94396c5e-a6bd-48dd-96d7-47eaefba03a2)
+
+![v11](https://github.com/user-attachments/assets/406abe80-61fd-4e29-b5cb-8eaa2cdcb111)
+![v8](https://github.com/user-attachments/assets/a55072b2-b317-4750-84dc-a9842c83584e)
+![v9](https://github.com/user-attachments/assets/2e31853c-d933-484c-98dd-ed082de8e909)
+![v11](https://github.com/user-attachments/assets/798c506a-3982-40dd-bb81-ec99a49b6b72)
+
+
+
+15) Now, enter the following commands for exploring post-CTS OpenROAD timing analysis by removing 'sky130_fd_sc_hd__clkbuf_1' cell from clock buffer list variable 'CTS_CLK_BUFFER_LIST':
+
+![v12](https://github.com/user-attachments/assets/c18604fd-52d3-4661-81d9-e0b9682043f5)
+![v13](https://github.com/user-attachments/assets/5c87306b-1caa-437f-8cba-77b93b2b968c)
+![v14](https://github.com/user-attachments/assets/ba972165-8a67-49b6-a841-d62d1b995c00)
+![v15](https://github.com/user-attachments/assets/bd274930-9259-4156-9aeb-6cb44ba6062a)
+![v16](https://github.com/user-attachments/assets/4f228a98-fcf0-42d3-9030-8071c6a8e3df)
+
+## Day 5 - Final steps for RTL2GDS using tritonRoute and openSTA
+### Design Rule Check
+1)Command to generate Power Distribution Network (PDN):
+gen_pdn
+![20 1](https://github.com/user-attachments/assets/d75691bf-16f0-41aa-9c72-ec5d89453651)
+Now, in a new terminal
+![20 2](https://github.com/user-attachments/assets/6df68341-9853-44c2-a97b-e4a08c9fdb28)
+![20 3](https://github.com/user-attachments/assets/07d00f0c-cbb4-46ac-808f-419dc3375bf2)
+searching for soloinv
+![20 4](https://github.com/user-attachments/assets/cc050bf7-1a68-4167-96c6-30c808f0138c)
+![20 5](https://github.com/user-attachments/assets/277d9925-6cd7-40df-8426-fd92436e3f7d)
+
+2) Now, we perfrom detailed routing using TritonRoute:
+   ![20 6](https://github.com/user-attachments/assets/7b8d448f-f1e6-441a-a91c-50a525933faf)
+
+![20 7](https://github.com/user-attachments/assets/df804cc9-c3ce-4f96-b7d2-cd4a168c5126)
+![20 8](https://github.com/user-attachments/assets/f86955c7-71ea-4586-bfdd-afe831f174ae)
+![20 9](https://github.com/user-attachments/assets/b33c3db4-e3ba-4c5f-bfce-e76dd6f00747)
+Now, in a new terminal
+![20 10](https://github.com/user-attachments/assets/3e416d25-33d2-4c4f-b7e0-9b70c2d2da20)
+
+![20 11](https://github.com/user-attachments/assets/d194fd6d-4c27-46c1-9b5f-62b4b8f6fb6a)
+![20 12](https://github.com/user-attachments/assets/948ceac6-e018-4d76-ac91-0161447a0420)
+searching for soloinv
+![20 13](https://github.com/user-attachments/assets/a7da2358-d264-4fda-9042-8a5acd4a0089)
+![20 14](https://github.com/user-attachments/assets/46a84637-e0cf-41a7-bd10-09ee33509dcc)
+3) Fast route guide present in openlane/designs/picorv32a/runs/25-03_18-52/tmp/routing
+![20 15](https://github.com/user-attachments/assets/6b5e308b-d2e0-4a29-a03c-85f5cbc607d4)
+4) Commands for SPEF extraction Post-Route parasitic extraction using SPEF extractor
+![20 16](https://github.com/user-attachments/assets/5bc8c40d-3c06-459d-b9f3-ca0de3c07a73)
+![20 17](https://github.com/user-attachments/assets/591fb74e-c425-44b8-8439-74f069a4c956)
+
+5) Commands for Post-Route OpenSTA timing analysis with the extracted parasitics of the route:
+   ![20 18](https://github.com/user-attachments/assets/b1639d4d-c69a-403f-b392-9cc4a1f2c68b)
+   ![20 19](https://github.com/user-attachments/assets/7b5cbc8d-1f99-4bc0-876d-67a8d7361d56)
+   ![20 20](https://github.com/user-attachments/assets/8de830e9-128c-498f-99c1-901078eaabb5)
+   ![20 21](https://github.com/user-attachments/assets/72ac9664-c81a-4a4f-9eb5-e079abb08129)
+
+--------------------------end----------------------
+ 
+
+
+
+
 
