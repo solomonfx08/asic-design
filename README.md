@@ -1489,3 +1489,201 @@ Incorrectly implemented poly.9 simple rule correction
 ![3 31](https://github.com/user-attachments/assets/609d0b1a-196e-49e4-a84a-b4a63f95e85d)
 ![3 30](https://github.com/user-attachments/assets/53602ca2-83d1-4535-b913-45450d1c8d92)
 ![3 29](https://github.com/user-attachments/assets/c7ebd684-ba8b-4fba-b662-6527a3d95eab)
+
+## DAY 4 : Pre-layout timing analysis and importance of good clock tree
+
+1. Fix up small DRC errors and verify the design is ready to be inserted into our flow.
+
+   Contents of tracks.info of sky130_fd_sc_hd
+   using
+   	//cd Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign
+	cd ../../pdks/sky130A/libs.tech/openlane/sky130_fd_sc_hd/
+	less tracks.info//
+   ![5 1](https://github.com/user-attachments/assets/6aef5355-c525-4b76-91ea-7ca905a1b1bc)
+Commands for tkcon window to set grid as tracks of locali layer
+using
+//grid 0.46um 0.34um 0.23um 0.17um
+![5 2](https://github.com/user-attachments/assets/4a9ba92f-4b03-40c2-8fda-aa72bc72fdf0)
+![5 3](https://github.com/user-attachments/assets/e2bebc16-b3c0-4c20-b527-c84c8b916013)
+![5 4](https://github.com/user-attachments/assets/b7414559-fc4e-49fc-b841-70ded0dbb071)
+Condition 1 verified
+![5 5](https://github.com/user-attachments/assets/955f4251-7afd-4f5a-993a-c8608cc791c9)
+
+2) Saving it by giving a custom name
+//save sky130_soloinv.mag
+3) Generate lef from the layout.
+  // lef write
+   ![5 6](https://github.com/user-attachments/assets/8aae8e5b-faf3-474e-9a02-ce46f29d1e02)
+ ![5 7](https://github.com/user-attachments/assets/31be2bd3-cb79-4fa9-a759-3595047de9a8)
+![5 8](https://github.com/user-attachments/assets/e3d19f73-cb2f-407f-8275-f6a5129a83e5)
+5)Copy the newly generated lef and associated required lib files to 'picorv32a' design 'src' directory.
+![5 9](https://github.com/user-attachments/assets/9904f591-0117-402d-8d39-76501d0bd498)
+
+6) Modify config.tcl:
+# Design
+set ::env(DESIGN_NAME) "picorv32a"
+
+set ::env(VERILOG_FILES) "./designs/picorv32a/src/picorv32a.v"
+set ::env(SDC_FILES) "./designs/picorv32a/src/picorv32a.sdc"
+
+
+set ::env(CLOCK_PERIOD) "5.000"
+set ::env(CLOCK_PORT) "clk"
+
+set ::env(CLOCK_NET) $::env(CLOCK_PORT) 
+
+
+set ::env(LIB_SYNTH) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib "
+set ::env(LIB_FASTEST) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__fast.lib"
+set ::env(LIB_SLOWEST) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__slow.lib "
+set ::env(LIB_TYPICAL) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib"
+
+set ::env(EXTRA_LEFS) [glob $::env(OPENLANE_ROOT)/designs/$::env(DESIGN_NAME)/src/*.lef]   ## this is the new line added to the existing config.tcl file
+
+set filename $::env(OPENLANE_ROOT)/designs/$::env(DESIGN_NAME)/$::env(PDK)_$::env(STD_CELL_LIBRARY)_config.tcl
+if { [file exists $filename] == 1 } {
+  source $filename
+}
+7) Now, run openlane flow synthesis:
+//cd Desktop/work/tools/openlane_working_dir/openlane
+docker
+./flow.tcl -interactive
+package require openlane 0.9
+prep -design picorv32a
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+run_synthesis//
+  ![5 10](https://github.com/user-attachments/assets/0e367b45-c83e-4e98-80a5-1dc4e55891ac)
+
+  8) Remove/reduce the newly introduced violations with the introduction of custom inverter cell by modifying design parameters.
+//prep -design picorv32a -tag 10-11_15-53 -overwrite
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+echo $::env(SYNTH_STRATEGY)
+set ::env(SYNTH_STRATEGY) "DELAY 3"
+echo $::env(SYNTH_BUFFERING)
+echo $::env(SYNTH_SIZING)
+
+set ::env(SYNTH_SIZING) 1
+
+echo $::env(SYNTH_DRIVING_CELL)
+run_synthesis//
+
+Screenshot of merged.lef in tmp directory with our custom inverter as macro
+![5 11](https://github.com/user-attachments/assets/090a9f54-dfcf-48bc-b721-ebe9c8d00be8)
+
+Screenshots of commands run
+![5 14](https://github.com/user-attachments/assets/aadbe7ad-4586-494a-9b58-3894308f8c89)
+![5 15](https://github.com/user-attachments/assets/79410a47-bfe6-44e1-af0b-d3241547d740)
+
+
+
+9) open a new terminal and run the below commands to load placement def in magic
+//cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/24-03_10-03/results/placement/
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &//
+![5 16](https://github.com/user-attachments/assets/24d46ef8-f5a0-47be-b945-f3a688bc07fb)
+![5 17](https://github.com/user-attachments/assets/7eae6e09-e846-4ecf-ba4b-69abaf9cf03b)
+Now, select the cell and type expand in tkcon window to view internal layers of cells
+
+![5 18](https://github.com/user-attachments/assets/6ef3497d-fb57-412c-9446-8edfe7380ae5)
+
+10) Timing analysis with ideal clocks using openSTA
+-Contents of my_base.sdc:
+set ::env(CLOCK_PORT) clk
+set ::env(CLOCK_PERIOD) 12.000
+set ::env(SYNTH_DRIVING_CELL) sky130_fd_sc_hd__inv_8
+set ::env(SYNTH_DRIVING_CELL_PIN) Y
+set ::env(SYNTH_CAP_LOAD) 17.65
+create_clock [get_ports $::env(CLOCK_PORT)]  -name $::env(CLOCK_PORT)  -period $::env(CLOCK_PERIOD)
+set IO_PCT  0.2
+set input_delay_value [expr $::env(CLOCK_PERIOD) * $IO_PCT]
+set output_delay_value [expr $::env(CLOCK_PERIOD) * $IO_PCT]
+puts "\[INFO\]: Setting output delay to: $output_delay_value"
+puts "\[INFO\]: Setting input delay to: $input_delay_value"
+
+
+set clk_indx [lsearch [all_inputs] [get_port $::env(CLOCK_PORT)]]
+#set rst_indx [lsearch [all_inputs] [get_port resetn]]
+set all_inputs_wo_clk [lreplace [all_inputs] $clk_indx $clk_indx]
+#set all_inputs_wo_clk_rst [lreplace $all_inputs_wo_clk $rst_indx $rst_indx]
+set all_inputs_wo_clk_rst $all_inputs_wo_clk
+
+
+# correct resetn
+set_input_delay $input_delay_value  -clock [get_clocks $::env(CLOCK_PORT)] $all_inputs_wo_clk_rst
+#set_input_delay 0.0 -clock [get_clocks $::env(CLOCK_PORT)] {resetn}
+set_output_delay $output_delay_value  -clock [get_clocks $::env(CLOCK_PORT)] [all_outputs]
+
+# TODO set this as parameter
+set_driving_cell -lib_cell $::env(SYNTH_DRIVING_CELL) -pin $::env(SYNTH_DRIVING_CELL_PIN) [all_inputs]
+set cap_load [expr $::env(SYNTH_CAP_LOAD) / 1000.0]
+puts "\[INFO\]: Setting load to: $cap_load"
+set_load  $cap_load [all_outputs]
+
+- Commands to run STA:
+  cd Desktop/work/tools/openlane_working_dir/openlane
+sta pre_sta.conf
+
+![5 24](https://github.com/user-attachments/assets/fc18f940-558d-43fb-a638-6c4bab6e49dd)
+
+
+11) We now try to optimise synthesis.
+  //  cd Desktop/work/tools/openlane_working_dir/openlane
+docker
+./flow.tcl -interactive
+prep -design picorv32a -tag 25-03_18-52 -overwrite
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+set ::env(SYNTH_SIZING) 1
+set ::env(SYNTH_MAX_FANOUT) 4
+echo $::env(SYNTH_DRIVING_CELL)
+run_synthesis//
+
+![5 21](https://github.com/user-attachments/assets/fe0875c1-6e04-4744-b2b7-0b3d5274f282)
+
+![5 25](https://github.com/user-attachments/assets/3e69e609-ad2f-4f96-a916-b40cc6d59348)
+
+12) Basic timing ECO
+    NOR gate of drive strength 2 is driving 5 fanouts
+
+![eco1](https://github.com/user-attachments/assets/320b577e-eb13-4838-82ac-c68ab62ed58a)
+
+
+
+![eco2](https://github.com/user-attachments/assets/ef043f66-4ef1-4467-850b-8328717a088b)
+
+
+13)  Replace the old netlist with the new netlist generated after timing ECO fix and implement the floorplan, placement and cts.
+	Run the following commands:
+     	//cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/25-03_18-52/results/synthesis/
+	ls
+	cp picorv32a.synthesis.v picorv32a.synthesis_old.v
+	ls
+	Commands to write verilog:
+	//write_verilog /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/25-03_18-			 	52/results/synthesis/picorv32a.synthesis.v
+	exit//
+Verified that the netlist is overwritten
+
+ ![5 26](https://github.com/user-attachments/assets/a6922f2f-bf5b-4583-9dd5-5ddc512b9e6b)
+Now, run the following commands:
+//cd Desktop/work/tools/openlane_working_dir/openlane
+docker
+./flow.tcl -interactive
+prep -design picorv32a -tag 25-03_18-52 -overwrite
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+set ::env(SYNTH_STRATEGY) "DELAY 3"
+set ::env(SYNTH_SIZING) 1
+run_synthesis
+init_floorplan
+place_io
+tap_decap_or
+run_placement
+run_cts//
+![v1](https://github.com/user-attachments/assets/7406415b-bfea-44d0-a840-5406788e823f)
+![v2](https://github.com/user-attachments/assets/dac4a421-2c3d-4ec3-8fea-a17c1a764ed1)
+![v3](https://github.com/user-attachments/assets/a25ec402-b268-4431-890b-57a74119f9d7)
+![v4](https://github.com/user-attachments/assets/585ba1b2-bda4-4008-8123-75cb28394d23)
+![v5](https://github.com/user-attachments/assets/c6bee699-15b1-478e-9884-a67048fbbb89)
+![v6](https://github.com/user-attachments/assets/82993611-24c8-41f4-9b94-61a6f837bfb4)
+
