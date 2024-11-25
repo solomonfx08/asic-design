@@ -1,4 +1,4 @@
-# asic-design activity 1
+![WhatsApp Image 2024-11-26 at 1 12 08 AM](https://github.com/user-attachments/assets/0201af9e-a1ca-48c5-b886-d0484080e869)![image](https://github.com/user-attachments/assets/3b3693e9-f6b1-42f5-a55c-82fec63ca12f)# asic-design activity 1
 
 #GCC
 
@@ -1694,8 +1694,13 @@ Verify Installation
 
 
 ### make gui_floorplan
+![WhatsApp Image 2024-11-26 at 1 05 43 AM](https://github.com/user-attachments/assets/d3b31587-d6d4-40df-97cc-cf356d4adcd0)
+
 
 ### sudo make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk gui_floorplan
+![WhatsApp Image 2024-11-26 at 1 12 08 AM](https://github.com/user-attachments/assets/4c6b8486-6f11-4c7a-a556-936e979cd86d)
+![WhatsApp Image 2024-11-26 at 1 11 50 AM](https://github.com/user-attachments/assets/2a7f4e42-9513-43d1-bee9-0e71459a0f95)
+
 ## For Placement
 ### sudo make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk place
 
@@ -1734,11 +1739,33 @@ Verify Installation
 
 ![image](https://github.com/user-attachments/assets/619398c0-a953-4f19-8ed0-795d0cd12e61)
 
-### For Route
-make gui_route
+## For Route
+### make gui_route
 
 ![image](https://github.com/user-attachments/assets/d5430161-80d2-48cd-90fe-ef362d3a7f43)
 
 ![image](https://github.com/user-attachments/assets/b86f4f82-48c5-4514-9d31-44d3c9f7161e)
 
-make gui_final
+### make gui_final
+![image](https://github.com/user-attachments/assets/85e519f7-48ea-4c68-bf9d-fe32499bba65)
+![image](https://github.com/user-attachments/assets/77ca1e68-e41b-43aa-971c-55bef00c54d3)
+	![image](https://github.com/user-attachments/assets/0b06d4a6-d276-4477-871e-b437c44d9339)
+![image](https://github.com/user-attachments/assets/9bdb443b-556d-4f7d-81a1-f106055a23a7)
+### To give the GDS file in the klayout type the following commands
+![image](https://github.com/user-attachments/assets/0b470bd2-3722-4f17-9760-b6eb715e9585)
+
+![image](https://github.com/user-attachments/assets/95353c05-81d9-46f0-a437-0a43fa9b2342)
+![image](https://github.com/user-attachments/assets/fc1907be-f8b5-40fc-a52e-9c71f18c07b6)
+![image](https://github.com/user-attachments/assets/795791e3-ad85-49a7-b33d-5d347f91a79a)
+## ROUTING
+### Route Command
+![image](https://github.com/user-attachments/assets/4b6dbb29-3cec-4879-8556-752a75482ba7)
+![image](https://github.com/user-attachments/assets/08c99b0e-0bc0-4b45-ac81-d0e12db6dddc)
+![image](https://github.com/user-attachments/assets/3eabc211-49f9-4f2b-aac1-d95a1fdc8405)
+
+![image](https://github.com/user-attachments/assets/3a45da2e-b79a-4a0f-b4e1-8547ae2f66b9)
+### make gui_route
+![image](https://github.com/user-attachments/assets/c89552d5-9631-4065-9b95-a331ee242388)
+
+![image](https://github.com/user-attachments/assets/cab75a21-afa1-4c93-b739-97de51595a94)
+![image](https://github.com/user-attachments/assets/3e72adb8-39ba-4e64-baed-fdc843432477)
