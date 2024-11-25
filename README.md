@@ -1637,6 +1637,16 @@ searching for soloinv
 
 --------------------------end----------------------
 
+# Task-13: OpenRoad Physical Design
+## Introduction
+### Bombe  
+The Bombe was an electro-mechanical machine developed during World War II to decrypt messages encrypted by the German Enigma machine. Built by Alan Turing and Gordon Welchman at Bletchley Park in the UK, it systematically analyzed potential rotor settings of the Enigma by leveraging known patterns in plaintext. The machine's logical operations greatly reduced the number of possible keys, significantly expediting the decryption process. Its contributions were pivotal to the Allied victory in the war.  
+
+### ENIAC (Electronic Numerical Integrator and Computer)  
+ENIAC, developed during World War II by John Presper Eckert and John Mauchly at the University of Pennsylvania, was the first fully electronic, general-purpose digital computer. Completed in 1945, it was designed to calculate artillery firing tables for the U.S. Army. Unlike earlier machines, ENIAC relied on vacuum tubes rather than mechanical or electromechanical parts. Although it lacked the ability to store programs internally and required manual reconfiguration for new tasks, it showcased the vast potential of electronic computing for solving large-scale numerical problems.  
+
+### EDVAC (Electronic Discrete Variable Automatic Computer)  
+EDVAC, also developed by Eckert and Mauchly with conceptual guidance from John von Neumann, introduced the stored-program architecture, a breakthrough in computing. Completed in 1949, it used binary representation instead of decimal and stored both instructions and data in memory, simplifying programming and enabling more complex operations. This innovation laid the foundation for the modern von Neumann architecture and marked a significant evolution from ENIAC.
 
 ## Installing and setting up ORFS
 ![Screenshot from 2024-11-25 16-10-16](https://github.com/user-attachments/assets/ab351212-4841-4736-b2f0-611cf3a854d8)
@@ -1655,7 +1665,27 @@ Verify Installation
 
 ![Screenshot from 2024-11-25 17-36-58](https://github.com/user-attachments/assets/e06ff10f-a49a-4595-adf4-f094a07b948a)
 
-?? file directory
+## file directory
+![image](https://github.com/user-attachments/assets/aced30c4-f13e-4e96-a080-6c355139d1cb)
+
+├── OpenROAD-flow-scripts             
+│   ├── docker           -> It has Docker based installation, run scripts and all saved here
+│   ├── docs             -> Documentation for OpenROAD or its flow scripts.  
+│   ├── flow             -> Files related to run RTL to GDS flow  
+|   ├── jenkins          -> It contains the regression test designed for each build update
+│   ├── tools            -> It contains all the required tools to run RTL to GDS flow
+│   ├── etc              -> Has the dependency installer script and other things
+│   ├── setup_env.sh     -> Its the source file to source all our OpenROAD rules to run the RTL to GDS flow
+
+![image](https://github.com/user-attachments/assets/90c08ab7-dd67-4473-b1f8-63796f808c8b)
+
+├── flow           
+│   ├── design           -> It has built-in examples from RTL to GDS flow across different technology nodes
+│   ├── makefile         -> The automated flow runs through makefile setup
+│   ├── platform         -> It has different technology note libraries, lef files, GDS etc 
+|   ├── tutorials        
+│   ├── util            
+│   ├── scripts             
 
 ## Commands for synthesis:
 
