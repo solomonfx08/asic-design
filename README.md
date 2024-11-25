@@ -1636,9 +1636,109 @@ searching for soloinv
    ![20 21](https://github.com/user-attachments/assets/72ac9664-c81a-4a4f-9eb5-e079abb08129)
 
 --------------------------end----------------------
+
+
+## Installing and setting up ORFS
+![Screenshot from 2024-11-25 16-10-16](https://github.com/user-attachments/assets/ab351212-4841-4736-b2f0-611cf3a854d8)
+Verify Installation
+![Screenshot from 2024-11-25 16-37-48](https://github.com/user-attachments/assets/24843358-f216-460f-ab4b-b2406025e205)
+![Screenshot from 2024-11-25 16-37-48](https://github.com/user-attachments/assets/74c1ad27-9f44-4318-b998-4ea60d39828a)
+
  
+![Screenshot from 2024-11-25 17-20-58](https://github.com/user-attachments/assets/3b6db3e7-2992-454a-8683-bb03b3cb76a2)
+
+![Screenshot from 2024-11-25 17-23-48](https://github.com/user-attachments/assets/1df845b8-136c-4176-97fa-a969320987c1)
+
+## make gui_final
+
+![Screenshot from 2024-11-25 17-41-14](https://github.com/user-attachments/assets/00459056-1dd8-4b02-82c5-23d6650519c2)
+
+![Screenshot from 2024-11-25 17-36-58](https://github.com/user-attachments/assets/e06ff10f-a49a-4595-adf4-f094a07b948a)
+
+?? file directory
+
+## Commands for synthesis:
+
+![Screenshot from 2024-11-25 23-31-28](https://github.com/user-attachments/assets/020a957f-7e1d-4321-af3c-b472cfecbd7d)
+
+![Screenshot from 2024-11-25 23-31-16](https://github.com/user-attachments/assets/317ccc26-24de-479e-b7ec-8d8fa48f04cf)
+
+### Synthesis netlist:
 
 
+![image](https://github.com/user-attachments/assets/82615a01-bc6d-408e-9892-7bce67fe5e21)
+
+### Synthesis log:
+
+![Screenshot from 2024-11-25 23-58-50](https://github.com/user-attachments/assets/600535b2-226c-4292-b518-5a7a0f01dd27)
+
+### Synthesis Check:
 
 
+![Screenshot from 2024-11-25 23-58-07](https://github.com/user-attachments/assets/c05143ff-ff31-4043-b364-be7e9bb20c0f)
 
+### Synthesis Stats:
+
+![Screenshot from 2024-11-25 23-56-53](https://github.com/user-attachments/assets/56b709e9-5278-4265-a2a4-bc2f68e2a9a4)
+
+![Screenshot from 2024-11-25 23-57-06](https://github.com/user-attachments/assets/0bcedd45-8c9b-4630-8df4-3243910e2635)
+
+![Screenshot from 2024-11-25 23-57-11](https://github.com/user-attachments/assets/3995b521-6f81-4e84-8172-9897d26bfc8d)
+
+
+## Commands for floorplan:
+
+![Screenshot from 2024-11-25 23-55-04](https://github.com/user-attachments/assets/bc629443-c588-4903-bd99-14335258b713)
+
+![Screenshot from 2024-11-25 23-54-37](https://github.com/user-attachments/assets/f950e371-1658-4ad1-af7a-cc947a808d80)
+
+
+### make gui_floorplan
+
+### sudo make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk gui_floorplan
+## For Placement
+### sudo make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk place
+
+![image](https://github.com/user-attachments/assets/55c8631f-2b10-4a11-8205-5a65523fab17)
+
+![Screenshot from 2024-11-26 01-10-27](https://github.com/user-attachments/assets/d7ed7c44-636a-4e69-a792-4e614dbf675f)
+
+## make gui_place
+
+![image](https://github.com/user-attachments/assets/3c04fff9-e117-4b1a-b463-935897ec120e)
+
+![image](https://github.com/user-attachments/assets/3a6f4412-d880-4ee6-9f06-0e7724a0fc86)
+
+
+![image](https://github.com/user-attachments/assets/1d6c383c-8d9a-4380-b429-88d4774e87fd)
+
+![image](https://github.com/user-attachments/assets/f3c22ad8-5716-4323-a688-900e48637ff6)
+
+## CTS Command
+
+![image](https://github.com/user-attachments/assets/58c718ce-f527-44d4-9cdf-e4b4c28be4a7)
+### make gui_cts
+
+![Screenshot from 2024-11-26 01-14-55](https://github.com/user-attachments/assets/484eb85f-b3d6-424c-9f70-541b2c8205d3)
+
+![image](https://github.com/user-attachments/assets/32e49dbb-3cd2-4d00-b22e-5e97b0d6478d)
+
+![image](https://github.com/user-attachments/assets/bd30026b-9797-46dd-9556-053687b901b3)
+### clock tree synthesis 
+
+![image](https://github.com/user-attachments/assets/7058806c-b00e-47f2-b2f3-a879ed6dae2f)
+
+![image](https://github.com/user-attachments/assets/dc5e0d9a-7354-4300-809d-257cdc955fcc)
+
+![image](https://github.com/user-attachments/assets/2ab31385-2536-417b-bd00-209af4860b57)
+
+![image](https://github.com/user-attachments/assets/619398c0-a953-4f19-8ed0-795d0cd12e61)
+
+### For Route
+make gui_route
+
+![image](https://github.com/user-attachments/assets/d5430161-80d2-48cd-90fe-ef362d3a7f43)
+
+![image](https://github.com/user-attachments/assets/b86f4f82-48c5-4514-9d31-44d3c9f7161e)
+
+make gui_final
