@@ -1668,24 +1668,10 @@ Verify Installation
 ## file directory
 ![image](https://github.com/user-attachments/assets/aced30c4-f13e-4e96-a080-6c355139d1cb)
 
-├── OpenROAD-flow-scripts             
-│   ├── docker           -> It has Docker based installation, run scripts and all saved here
-│   ├── docs             -> Documentation for OpenROAD or its flow scripts.  
-│   ├── flow             -> Files related to run RTL to GDS flow  
-|   ├── jenkins          -> It contains the regression test designed for each build update
-│   ├── tools            -> It contains all the required tools to run RTL to GDS flow
-│   ├── etc              -> Has the dependency installer script and other things
-│   ├── setup_env.sh     -> Its the source file to source all our OpenROAD rules to run the RTL to GDS flow
-
+├
 ![image](https://github.com/user-attachments/assets/90c08ab7-dd67-4473-b1f8-63796f808c8b)
 
-├── flow           
-│   ├── design           -> It has built-in examples from RTL to GDS flow across different technology nodes
-│   ├── makefile         -> The automated flow runs through makefile setup
-│   ├── platform         -> It has different technology note libraries, lef files, GDS etc 
-|   ├── tutorials        
-│   ├── util            
-│   ├── scripts             
+        
 
 ## Commands for synthesis:
 
