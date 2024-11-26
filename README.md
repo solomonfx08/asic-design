@@ -1,4 +1,4 @@
-![WhatsApp Image 2024-11-26 at 6 11 15 AM](https://github.com/user-attachments/assets/0806f2f3-8e7a-4630-a107-43003214527d)![WhatsApp Image 2024-11-26 at 1 12 08 AM](https://github.com/user-attachments/assets/0201af9e-a1ca-48c5-b886-d0484080e869)![image](https://github.com/user-attachments/assets/3b3693e9-f6b1-42f5-a55c-82fec63ca12f)# asic-design activity 1
+# asic-design activity 1
 
 #GCC
 
