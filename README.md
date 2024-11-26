@@ -1,4 +1,4 @@
-![WhatsApp Image 2024-11-26 at 1 12 08 AM](https://github.com/user-attachments/assets/0201af9e-a1ca-48c5-b886-d0484080e869)![image](https://github.com/user-attachments/assets/3b3693e9-f6b1-42f5-a55c-82fec63ca12f)# asic-design activity 1
+![WhatsApp Image 2024-11-26 at 6 11 15 AM](https://github.com/user-attachments/assets/0806f2f3-8e7a-4630-a107-43003214527d)![WhatsApp Image 2024-11-26 at 1 12 08 AM](https://github.com/user-attachments/assets/0201af9e-a1ca-48c5-b886-d0484080e869)![image](https://github.com/user-attachments/assets/3b3693e9-f6b1-42f5-a55c-82fec63ca12f)# asic-design activity 1
 
 #GCC
 
@@ -1783,7 +1783,11 @@ Verify Installation
 
 ![image](https://github.com/user-attachments/assets/11fa41ab-d71a-44ca-b714-375ca65dfdc5)
 
-## ORFS
+## MACRO PLACEMENT
+for the fllowing file
+![image](https://github.com/user-attachments/assets/ea8a2aa9-56b1-456a-9afd-4b084ea07aa6)
+
+###  ORFS
 ![Screenshot from 2024-11-26 03-25-51](https://github.com/user-attachments/assets/1de11ab9-484b-4394-a107-3fa1152314f5)
 
 ![Screenshot from 2024-11-26 03-25-57](https://github.com/user-attachments/assets/3d7bb9a5-29f0-4024-a508-1517f34ba94b)
@@ -1799,6 +1803,12 @@ Verify Installation
 ![image](https://github.com/user-attachments/assets/2ab31385-2536-417b-bd00-209af4860b57)
 
 ![image](https://github.com/user-attachments/assets/619398c0-a953-4f19-8ed0-795d0cd12e61)
+
+
+### HEAT MAP
+![WhatsApp Image 2024-11-26 at 6 11 15 AM](https://github.com/user-attachments/assets/8fd1ea20-b9cb-4789-bd5f-79213bc2a6dc)
+![WhatsApp Image 2024-11-26 at 6 11 15 AM](https://github.com/user-attachments/assets/270d7f72-aadb-4354-a1f4-8e73bf9b44b4)
+![WhatsApp Image 2024-11-26 at 6 11 11 AM](https://github.com/user-attachments/assets/e1784bc6-4b64-4354-a850-c0094725b8e8)
 
 ## For Route
 ### make gui_route
