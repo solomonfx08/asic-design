@@ -1783,6 +1783,11 @@ Verify Installation
 
 ![image](https://github.com/user-attachments/assets/11fa41ab-d71a-44ca-b714-375ca65dfdc5)
 
+## ORFS
+![Screenshot from 2024-11-26 03-25-51](https://github.com/user-attachments/assets/1de11ab9-484b-4394-a107-3fa1152314f5)
+
+![Screenshot from 2024-11-26 03-25-57](https://github.com/user-attachments/assets/3d7bb9a5-29f0-4024-a508-1517f34ba94b)
+![image](https://github.com/user-attachments/assets/110ad351-52c6-4dad-a6fe-a74d623d89f0)
 
 
 ### clock tree synthesis 
