@@ -1696,11 +1696,12 @@ Verify Installation
 ### Synthesis netlist:
 
 
-![image](https://github.com/user-attachments/assets/82615a01-bc6d-408e-9892-7bce67fe5e21)
+![image](https://github.com/user-attachments/assets/052b3fcc-370c-4c85-94b4-0c86deb651d2)
 
 ### Synthesis log:
+![image](https://github.com/user-attachments/assets/3e123f4f-aef2-4b45-98c1-5415583aa6af)
 
-![Screenshot from 2024-11-25 23-58-50](https://github.com/user-attachments/assets/600535b2-226c-4292-b518-5a7a0f01dd27)
+![image](https://github.com/user-attachments/assets/12f4a653-ec83-44cf-a65e-e8645c4b5b06)
 
 ### Synthesis Check:
 
@@ -1708,12 +1709,9 @@ Verify Installation
 ![Screenshot from 2024-11-25 23-58-07](https://github.com/user-attachments/assets/c05143ff-ff31-4043-b364-be7e9bb20c0f)
 
 ### Synthesis Stats:
+![image](https://github.com/user-attachments/assets/447f8671-2d9e-4b43-a497-1557fb51fe9d)
 
-![Screenshot from 2024-11-25 23-56-53](https://github.com/user-attachments/assets/56b709e9-5278-4265-a2a4-bc2f68e2a9a4)
-
-![Screenshot from 2024-11-25 23-57-06](https://github.com/user-attachments/assets/0bcedd45-8c9b-4630-8df4-3243910e2635)
-
-![Screenshot from 2024-11-25 23-57-11](https://github.com/user-attachments/assets/3995b521-6f81-4e84-8172-9897d26bfc8d)
+![image](https://github.com/user-attachments/assets/3e453d41-3d7a-49d9-9817-bfac98ba95a1)
 
 
 ## Commands for floorplan:
@@ -1724,41 +1722,69 @@ Verify Installation
 
 
 ### make gui_floorplan
-![WhatsApp Image 2024-11-26 at 1 05 43 AM](https://github.com/user-attachments/assets/d3b31587-d6d4-40df-97cc-cf356d4adcd0)
+![image](https://github.com/user-attachments/assets/09501e0b-206b-491e-9afc-ef79207d873e)
+
+
+![image](https://github.com/user-attachments/assets/ad14d3e9-9d01-419b-83ed-f6cbdf64104d)
+![image](https://github.com/user-attachments/assets/bc509033-230f-483a-80b0-35d093b44f17)
+
+### FLOORPLAN_LOG
+![image](https://github.com/user-attachments/assets/b81f9a06-0d38-485c-a538-6f12c18e9b0e)
+
+### FLOORPLAN TIMING REPORT
+![image](https://github.com/user-attachments/assets/1805b479-57ee-48bb-a8bd-31723f53a619)
+![image](https://github.com/user-attachments/assets/231ab041-9a40-46bd-92e5-6290c4c29ad0)
 
 
 ### sudo make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk gui_floorplan
-![WhatsApp Image 2024-11-26 at 1 12 08 AM](https://github.com/user-attachments/assets/4c6b8486-6f11-4c7a-a556-936e979cd86d)
-![WhatsApp Image 2024-11-26 at 1 11 50 AM](https://github.com/user-attachments/assets/2a7f4e42-9513-43d1-bee9-0e71459a0f95)
+![image](https://github.com/user-attachments/assets/4e285503-305f-4539-a4ce-f726f3315195)
+
+![image](https://github.com/user-attachments/assets/53a96a0d-a17a-491d-8e30-ac2dfab15ce6)
+
 
 ## For Placement
 ### sudo make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk place
 
-![image](https://github.com/user-attachments/assets/55c8631f-2b10-4a11-8205-5a65523fab17)
+![image](https://github.com/user-attachments/assets/f0d85ad1-f1c5-4627-a57f-cce4a00453b6)
 
-![Screenshot from 2024-11-26 01-10-27](https://github.com/user-attachments/assets/d7ed7c44-636a-4e69-a792-4e614dbf675f)
+![image](https://github.com/user-attachments/assets/f5feacb0-a28d-4fc4-bc86-56b8443a527f)
+
 
 ## make gui_place
 
-![image](https://github.com/user-attachments/assets/3c04fff9-e117-4b1a-b463-935897ec120e)
-
-![image](https://github.com/user-attachments/assets/3a6f4412-d880-4ee6-9f06-0e7724a0fc86)
+![image](https://github.com/user-attachments/assets/190010c8-e962-485b-beb7-3ad3f8153988)
 
 
-![image](https://github.com/user-attachments/assets/1d6c383c-8d9a-4380-b429-88d4774e87fd)
+![image](https://github.com/user-attachments/assets/b14a164e-79a9-492a-b149-2517096c8a5c)
 
-![image](https://github.com/user-attachments/assets/f3c22ad8-5716-4323-a688-900e48637ff6)
+
+![image](https://github.com/user-attachments/assets/b72a6698-8b3c-4b77-9e5b-a4fc5339466d)
+
+
+![image](https://github.com/user-attachments/assets/fc265a64-6e4f-44d8-85df-8a5fb303faf1)
+
+### PLACE_REPORT
+![image](https://github.com/user-attachments/assets/d2c93956-c18d-47b3-821e-7230658d3291)
+![image](https://github.com/user-attachments/assets/64871043-158a-4093-8d4f-c464179dbe27)
+![image](https://github.com/user-attachments/assets/8d8525c6-94ee-40e5-925e-172fc4e59f6d)
 
 ## CTS Command
 
-![image](https://github.com/user-attachments/assets/58c718ce-f527-44d4-9cdf-e4b4c28be4a7)
+![image](https://github.com/user-attachments/assets/bf50762f-3b58-47b4-9661-0439ad3afafc)
+![image](https://github.com/user-attachments/assets/3e07f9e1-71e3-4a98-a8f6-f811c4f010e2)
+
 ### make gui_cts
 
-![Screenshot from 2024-11-26 01-14-55](https://github.com/user-attachments/assets/484eb85f-b3d6-424c-9f70-541b2c8205d3)
+![image](https://github.com/user-attachments/assets/b73eb10c-2ec6-4ca0-b8be-54da8a833a27)
 
-![image](https://github.com/user-attachments/assets/32e49dbb-3cd2-4d00-b22e-5e97b0d6478d)
 
-![image](https://github.com/user-attachments/assets/bd30026b-9797-46dd-9556-053687b901b3)
+
+![image](https://github.com/user-attachments/assets/42884ddd-982d-44bb-bda3-76cbd2b04a15)
+
+![image](https://github.com/user-attachments/assets/11fa41ab-d71a-44ca-b714-375ca65dfdc5)
+
+
+
 ### clock tree synthesis 
 
 ![image](https://github.com/user-attachments/assets/7058806c-b00e-47f2-b2f3-a879ed6dae2f)
@@ -1772,7 +1798,9 @@ Verify Installation
 ## For Route
 ### make gui_route
 
-![image](https://github.com/user-attachments/assets/d5430161-80d2-48cd-90fe-ef362d3a7f43)
+![image](https://github.com/user-attachments/assets/eae736db-8f03-42f3-b811-6471411c0438)
+
+
 
 ![image](https://github.com/user-attachments/assets/b86f4f82-48c5-4514-9d31-44d3c9f7161e)
 
