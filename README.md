@@ -1251,7 +1251,7 @@ endmodule
  1. Copy source files:
     First copy the src folder from VSDBabySoC directory to your VLSI folder. Then, move this folder into the sky130RTLDesignAndSynthesisWorkshop directory using the following commands:
 sudo -i
-cd /home/nikhil-bhusari/VLSI/
+cd /home/solo/VLSI/
 cp -r src sky130RTLDesignAndSynthesisWorkshop/
 2. Navigate to the target directory:
    Move to the correct directory to begin the synthesis process:
