@@ -1279,6 +1279,13 @@ iverilog -o ./pre_synth_sim.out -DPRE_SYNTH_SIM src/module/testbench.v -I src/in
 gtkwave pre_synth_sim.vcd
 
 
+LOG FILES
+![Screenshot from 2024-12-17 21-52-03](https://github.com/user-attachments/assets/2b05315a-2a7b-4068-90fb-268bb5818cf5)
+
+![Screenshot from 2024-12-17 21-51-57](https://github.com/user-attachments/assets/3b84a4a7-deb1-4b33-8532-88a99445f30b)
+
+![Screenshot from 2024-12-17 21-51-45](https://github.com/user-attachments/assets/01851016-64e9-4610-8ef1-eaedbc26e8f3)
+
 
 
 COMPARISON of Functionality vs Synthesized output waveform:
